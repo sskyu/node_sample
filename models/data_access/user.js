@@ -139,83 +139,27 @@ exports.update = function(uid, firstName, lastName, age, callback) {
         });
 };
 
-/**
- * ユーザを追加する
- * @param {string}   user_code [ユーザコード]
- * @param {string}   user_name [ユーザ名]
- * @param {string}   password  [パスワード]
- * @param {Function} callback  [コールバック。追加したユーザオブジェクトを返す。エラーが発生した場合はfalseを返す]
- */
-exports.add = function(user_code, user_name, password, callback) {
+exports.add = function(obj, callback) {
     var seq = require('../dbconn').master();
     var User = def(seq).model;
 
     User
         .build({
-            user_code : user_code,
-            user_name : user_name,
-            password  : password
+            uid : obj.uid,
+            firstname : obj.firstname,
+            lastname  : obj.lastname,
+            age       : obj.age,
+            password  : obj.password,
+            user_role : obj.user_role,
+            tags      : obj.tags,
+            servers   : obj.servers
         })
         .save()
         .success(function(user) {
-            callback(user);
+            callback(null, user);
         })
         .error(function(err) {
             console.log(err);
-            callback(false);
-        })
-}
-
-/**
- * ユーザ名を変更する
- * @param  {string}   user_code [ユーザコード]
- * @param  {string}   user_name [ユーザ名]
- * @param  {Function} callback  [コールバック。変更後のユーザオブジェクトを返す。失敗した場合はfalseを返す]
- */
-exports.updateUserName = function(user_code, user_name, callback) {
-    var seq = require('../dbconn').master();
-    var User = def(seq).model;
-
-    User
-        .find(user_code)
-        .success(function(user) {
-            user.updateAttributes({
-                user_name: user_name
-            })
-            .success(function() {
-                callback(true);
-            })
-            .error(function(err){
-                console.log(err);
-                callback(false);
-            })
-        })
-        .error(function(err) {
-            console.log(err);
-            callback(false);
-        })
-}
-
-exports.updatePassword = function(user_code, password, callback) {
-    var seq = require('../dbconn').master();
-    var User = def(seq).model;
-
-    User
-        .find(user_code)
-        .success(function(user) {
-            user.updateAttributes({
-                password: password
-            })
-            .success(function(user) {
-                callback(user);
-            })
-            .error(function(err) {
-                console.log(err);
-                callback(false);
-            })
-        })
-        .error(function(err) {
-            console.log(err);
-            callback(false);
-        })
-}
+            callback(err);
+        });
+};

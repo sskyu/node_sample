@@ -20,3 +20,9 @@ exports.top = function(req, res) {
         session : req.session
     }, config.general));
 };
+
+exports.dammy = function(req, res) {
+	require('../models/business/user').createDummyData(function(err) {
+		res.send('create dummy done.');
+	});
+};

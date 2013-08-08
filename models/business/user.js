@@ -35,3 +35,55 @@ exports.userUpdate = function(params, callback) {
         callback(null, user);
     });
 };
+
+// TODO: 途中
+exports.createDummyData = function(callback) {
+    var _ = require('underscore');
+    var dummyDatas = [
+        {
+            uid        : 'admin',
+            firstname  : 'taro',
+            lastname   : 'admin',
+            age        : 30,
+            password   : '91tXzyZxa',
+            user_roles : 'admin,editor,tester',
+            tags       : 'hoge,fuga',
+            servers    : 'none'
+        },
+        {
+            uid        : 'admin2',
+            firstname  : 'jiro',
+            lastname   : 'admin',
+            age        : 29,
+            password   : 'asiE65Jzf',
+            user_roles : 'admin,editor,tester',
+            tags       : 'hoge,fuga',
+            servers    : 'none'
+        },
+        {
+            uid        : 'user001',
+            firstname  : 'yuki',
+            lastname   : 'saitou',
+            age        : 25,
+            password   : '6Qujg4isH',
+            user_roles : 'editor,tester',
+            tags       : 'hoge,fuga',
+            servers    : 'none'
+        },
+        {
+            uid        : 'user002',
+            firstname  : 'yoko',
+            lastname   : 'nanno',
+            age        : 24,
+            password   : 'a3ecCvoB3',
+            user_roles : 'editor,tester',
+            tags       : 'hoge,fuga',
+            servers    : 'none'
+        }
+    ];
+    _.each(dummyDatas, function(data) {
+        userDataModel.add(data, function(err) {
+            callback();
+        });
+    });
+};

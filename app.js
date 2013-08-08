@@ -40,6 +40,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/dammy', routes.dammy);
+
 app.get('/', routes.index);
 app.get('/main/top', valid.isAuthorized, routes.top);
 

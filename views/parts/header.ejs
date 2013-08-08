@@ -1,0 +1,14 @@
+<div class="header">
+    <div id="st_login" class="status"><%= session.userName %></div>
+    <div id="st_login" class="status">
+        <% if (title === 'Logout') { %>
+        <a href="/user/login">Login</a>
+        <% } else { %>
+        <a href="/user/logout">Logout</a>
+        <% } %>
+    </div>
+    <div id="st_message" class="status"><%= message %></div>
+    <div class="menu">
+        <a href="/main/top">Top画面</a>
+    </div>
+</div>

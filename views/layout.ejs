@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  </head>
+  <body>
+    <% if (title !== 'Login') { %>
+    <%- partial('parts/header', {
+      title: title,
+      session: session,
+      message: message
+    }) %>
+    <% } %>
+    <%- body %>
+  </body>
+</html>

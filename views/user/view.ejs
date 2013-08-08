@@ -1,0 +1,10 @@
+<form action="/user/viewprofile" method="post" name="profileform" class="form-profile">
+    <label for="uid">UID:</label>
+    <input type="text" name="uid" value="<%= err ? '' : user.uid %>" readonly=""><br>
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" value="<%= err ? '' : user.firstname %>" readonly=""><br>
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" value="<%= err ? '' : user.lastname %>" readonly=""><br>
+    <label for="age">Age:</label>
+    <input type="text" name="age" value="<%= err ? '' : user.age %>" readonly="">
+</form>

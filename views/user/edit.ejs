@@ -1,0 +1,11 @@
+<form action="/user/edit" method="post" name="profileform" class="form-profile">
+    <label for="uid">UID:</label>
+    <input type="text" name="uid" value="<%= err ? '' : user.uid %>"><br>
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" value="<%= err ? '' : user.firstname %>"><br>
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" value="<%= err ? '' : user.lastname %>"><br>
+    <label for="age">Age:</label>
+    <input type="text" name="age" value="<%= err ? '' : user.age %>"><br>
+    <button type="submit" class="btn btn-large btn-primary">Edit</button>
+</form>
